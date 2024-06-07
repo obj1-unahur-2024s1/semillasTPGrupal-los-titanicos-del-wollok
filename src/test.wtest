@@ -1,0 +1,15 @@
+import Plantas.*
+
+describe "Especie menta" {
+  const menta1= new Mentas(anioDeObtencionSemilla=2018, altura=1)
+  const menta2= new Mentas(anioDeObtencionSemilla=2018, altura=0.3)
+	test "una menta de 1 metro, debería dar semillas y ocupar un espacio de 3 metros cuadrados" {
+
+		assert.that(menta1.daNuevaSemilla())
+		}
+		
+	test "una menta de solo 0.3 metros, no debería dar semillas y ocuparía 0.9 metros cuadrados de espacio"{
+		assert.notThat(menta2.daNuevaSemilla())
+		assert.equals(0.9, menta2.espacioQueOcupa())
+	}
+}
