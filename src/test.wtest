@@ -1,15 +1,25 @@
 import Plantas.*
 
-describe "Especie menta" {
-  const menta1= new Mentas(anioDeObtencionSemilla=2018, altura=1)
-  const menta2= new Mentas(anioDeObtencionSemilla=2018, altura=0.3)
-	test "una menta de 1 metro, debería dar semillas y ocupar un espacio de 3 metros cuadrados" {
-
+describe "Menta" {
+  
+	test "una menta de 1 metro, debería dar semillas y ocupar un espacio de 3 metros cuadrados. 
+Y una menta de solo 0.3 metros, no debería dar semillas y ocuparía 0.9 metros 
+cuadrados de espacio." {
+  
+  const menta1= new Menta(anioDeObtencionSemilla=2024, altura=1)
+  const menta2= new Menta(anioDeObtencionSemilla=2006, altura=0.3)
 		assert.that(menta1.daNuevaSemilla())
-		}
-		
-	test "una menta de solo 0.3 metros, no debería dar semillas y ocuparía 0.9 metros cuadrados de espacio"{
 		assert.notThat(menta2.daNuevaSemilla())
 		assert.equals(0.9, menta2.espacioQueOcupa())
+		}
+	
+	test "La tolerancia al sol depende de su altura: menor a 0.5 metros: 6 horas;
+	entre 0.5 y 1 metro: 7 horas; más de 1 metro: 9 horas"{
+		const soja1= new  Soja(anioDeObtencionSemilla=2023, altura=0.4  )
+		
+		assert.equals(7, soja1.horasDeSol())
+		assert.equals(false, soja1.daNuevaSemilla())
+		assert.equals(0.3, soja1.espacioQueOcupa())
 	}
+	
 }
