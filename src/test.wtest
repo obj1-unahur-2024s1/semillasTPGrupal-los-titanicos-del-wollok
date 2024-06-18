@@ -1,5 +1,5 @@
 import Plantas.*
-
+import parcelas.*
 describe "Menta" {
   
 	test "una menta de 1 metro, debería dar semillas y ocupar un espacio de 3 metros cuadrados. 
@@ -21,5 +21,20 @@ cuadrados de espacio." {
 		assert.equals(false, soja1.daNuevaSemilla())
 		assert.equals(0.3, soja1.espacioQueOcupa())
 	}
+	test"si tenemos una quinoa que tolera 12 horas de sol y su semilla de origen es de 2010, 
+se trata de una planta que da semillas."{
+	const quinoa1= new Quinoa(anioDeObtencionSemilla=2010, altura=1, horasDeSol=12)
+	assert.equals(true, quinoa1.daNuevaSemilla())
+	}
+	test"si tenemos una planta que tolere 9 horas de sol pero cuya semilla de origen es de 2001, también da semillas."{
+			const quinoa2= new Quinoa(anioDeObtencionSemilla=2001, altura=0.5, horasDeSol=9)
+	assert.equals(true, quinoa2.daNuevaSemilla())
+	}
 	
+	test"Una parcela de 20 metros de ancho por 1 metro de largo que recibe 8 horas de sol por día, tiene una superficie de 20 metros cuadrados 
+y la cantidad máxima de plantas que tolera es 4"{
+		const parcela1= new Parcela(ancho=20, largo=1,horasDeSol=8 )
+	assert.equals(20, parcela1.superficieParcela())
+	assert.equals(4, parcela1.cantidadMaxima())
+	}
 }
